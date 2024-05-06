@@ -1,0 +1,36 @@
+@model List<Person>
+
+<h2>Person</h2>
+
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 10px;
+        /* Adjust this value to add more or less space */
+    }
+</style>
+
+<table>
+    <tr>
+        <th>Full Name</th>
+        <th>Gender</th>
+        <th>Date of Birth</th>
+        <th>Phone Number</th>
+        <th>Birth Place</th>
+        <th>Is Graduated?</th>
+    </tr>
+    @foreach (var person in Model)
+    {
+        <tr>
+            <td>@person.FullName</td>
+            <td>@person.Gender</td>
+            <td>@person.DateOfBirth.ToString("dd/MM/yyyy")</td>
+            <td>@person.PhoneNumber</td>
+            <td>@person.BirthPlace</td>
+            <td>@(person.IsGraduated ? "Yes" : "No")</td>
+        </tr>
+    }
+</table>
