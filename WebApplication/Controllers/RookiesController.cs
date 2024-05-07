@@ -60,17 +60,19 @@ public class RookiesController : Controller
 
     public IActionResult DownloadExcel()
     {
+        ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
         var stream = new MemoryStream();
 
         using (var package = new ExcelPackage(stream))
         {
             var worksheet = package.Workbook.Worksheets.Add("Persons");
             worksheet.Cells.LoadFromCollection(_persons, PrintHeaders: true);
+
             package.Save();
         }
 
         stream.Position = 0;
-        string excelName = $"Persons.xlsx";
+        string excelName = "Persons.xlsx";
 
         return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
     }
