@@ -40,7 +40,6 @@ public class RookiesController : Controller
         return View("GetFullNamesView", _persons);
     }
 
-
     public IActionResult GetByBirthYear(int year)
     {
         var people = _persons.Where(p => p.DateOfBirth.Year == year).ToList();
